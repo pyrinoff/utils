@@ -1,9 +1,24 @@
 plugins {
-    id 'java'
+    id 'java-library'
+    id 'maven-publish'
 }
 
 group 'ru.pyrinoff'
 version '1.0-SNAPSHOT'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+compileJava.options.encoding = "UTF-8"
+compileTestJava.options.encoding = "UTF-8"
+
+//bootJar { enabled = false }
+//tasks.resolveMainClassName.enabled = false
+jar {
+    enabled = true
+    archiveClassifier = ''
+}
 
 repositories {
     mavenCentral()
@@ -22,3 +37,24 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from components.java
+        }
+    }
+
+    repositories {
+        mavenLocal()
+    }
+}
+
+wrapper {
+    gradleVersion = "7.4"
+    distributionType = Wrapper.DistributionType.ALL
+}
+
+
+build.finalizedBy publishToMavenLocal
