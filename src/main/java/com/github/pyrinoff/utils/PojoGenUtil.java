@@ -1,4 +1,4 @@
-package ru.pyrinoff.utils;
+package com.github.pyrinoff.utils;
 
 import com.sun.codemodel.JCodeModel;
 import org.jsonschema2pojo.*;

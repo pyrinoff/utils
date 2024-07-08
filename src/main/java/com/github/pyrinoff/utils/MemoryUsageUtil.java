@@ -1,4 +1,4 @@
-package ru.pyrinoff.utils;
+package com.github.pyrinoff.utils;
 
 public interface MemoryUsageUtil {
 

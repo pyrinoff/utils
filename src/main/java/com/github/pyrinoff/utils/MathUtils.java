@@ -1,4 +1,4 @@
-package ru.pyrinoff.utils;
+package com.github.pyrinoff.utils;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
