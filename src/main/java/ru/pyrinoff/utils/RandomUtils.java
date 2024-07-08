@@ -21,6 +21,7 @@ interface RandomUtils {
         if (to < from) throw new IllegalArgumentException("'To' value must be greater than or equal to 'From' value.");
         if (to == from) return to;
         return new Random().nextInt(to - from + 1) + from;
+        //return (int) ((Math.random() * (to - from)) + from);
     }
 
     static String generateIpStartsWith() {
