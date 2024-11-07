@@ -12,7 +12,7 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.stream.Stream;
 
-public interface FileUtils {
+public interface FileUtil {
 
     static void filePutContent(String filename, List<String> content) throws IOException {
         //if(content.isEmpty() || content.get(0).isEmpty()) return;
@@ -23,8 +23,7 @@ public interface FileUtils {
     static List<String> fileGetContent(String filename) throws IOException {
         try {
             return Files.readAllLines(Path.of(filename));
-        }
-        catch (@NotNull final NoSuchFileException e) {
+        } catch (@NotNull final NoSuchFileException e) {
             return null;
         }
     }
@@ -33,8 +32,7 @@ public interface FileUtils {
     static String fileGetContentAsString(String filename) throws IOException {
         try {
             return Files.readString(Path.of(filename));
-        }
-        catch (@NotNull final NoSuchFileException e) {
+        } catch (@NotNull final NoSuchFileException e) {
             return null;
         }
     }
@@ -63,7 +61,7 @@ public interface FileUtils {
                     Files.delete(path);
                 } catch (IOException e) {
                     System.err.println("Failed to delete file: " + path);
-                    if(failOnError) throw new RuntimeException(e);
+                    if (failOnError) throw new RuntimeException(e);
                 }
             });
         }
@@ -75,9 +73,16 @@ public interface FileUtils {
                 Files.deleteIfExists(Path.of(oneFile));
             } catch (IOException e) {
                 System.err.println("Failed to delete file: " + oneFile);
-                if(failOnError) throw new RuntimeException(e);
+                if (failOnError) throw new RuntimeException(e);
             }
         }
+    }
+
+    static Path getFilepathFromResources(Class<?> clazz, String filepathInResources) {
+        return new File(clazz
+                .getClassLoader()
+                .getResource(filepathInResources)
+                .getFile()).toPath();
     }
 
 }

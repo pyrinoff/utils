@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import org.jetbrains.annotations.NotNull;
 
-public interface GetByUrlUtilJsonUtil {
+public interface JsonUtil {
 
     static String objectToJson(Object object, boolean pretty) throws JsonProcessingException {
         @NotNull final ObjectMapper objectMapper = new ObjectMapper();

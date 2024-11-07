@@ -5,7 +5,7 @@ import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.Random;
 
-interface RandomUtils {
+public interface RandomUtil {
 
     /**
      * Получить рандомное число с нужным количеством цифр.

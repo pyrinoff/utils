@@ -2,9 +2,8 @@ package com.github.pyrinoff.utils;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.util.Random;
 
-interface MathUtils {
+public interface MathUtil {
 
     /**
      * Округление float до нужного числа разрядов.
