@@ -48,13 +48,14 @@ public interface GetByUrlUtil {
         return "";
     }
 
-    static String saveUrlToNearbyFolder(String urlString, String folder, @Nullable String extension) throws IOException {
+    static String saveUrlToNearbyFolder(String urlString, String folder, @Nullable String filename, @Nullable String extension) throws IOException {
         final URL url = new URL(urlString);
         final String currentDir = System.getProperty("user.dir");
         final Path tmpDir = Paths.get(currentDir, folder);
         if (!Files.exists(tmpDir)) Files.createDirectory(tmpDir);
         final String extFromUrl = getFileExtensionUrl(urlString);
-        final String filePathString = System.currentTimeMillis()
+        final String filePathString =
+                (filename != null ? filename : System.currentTimeMillis())
                 //расширение берем из аргумента, либо URL, либо ставим .tmp
                 + "."
                 + (extension != null ? extension : !extFromUrl.isEmpty() ? extFromUrl : "tmp");
